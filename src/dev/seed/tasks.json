@@ -1,0 +1,50 @@
+[
+  {
+    "title": "tonight dinner",
+    "note": "-barbari \n -tomatoes \n -eggs \n -pepsi",
+    "isDone": false,
+    "folderId": "Shopping"
+  },
+  {
+    "title": "",
+    "note": "-pen \n -a4 paper \n whiteboard",
+    "isDone": false,
+    "folderId": "Shopping"
+  },
+  {
+    "title": "Network Course",
+    "note": "-download wireshark \n -solve chapter 1 problems",
+    "isDone": false,
+    "folderId": "Uni"
+  },
+  {
+    "title": "",
+    "note": "-Visit the main office, what are the missing documents?",
+    "isDone": false,
+    "folderId": "Uni"
+  },
+  {
+    "title": "DS Course",
+    "note": "-Buy the CLRS book",
+    "isDone": true,
+    "folderId": "Uni"
+  },
+  {
+    "title": "Dentist",
+    "note": "visit 1: tomorrow sunday 17:00 \n visit 2: next sunday 16:00",
+    "isDone": false,
+    "folderId": "Appoinments"
+  },
+  {
+    "title": "John",
+    "note": "-26$ last week restaurant \n +10$ for Uber \n -16$ should be given to him",
+    "isDone": false,
+    "folderId": "Payments"
+  },
+  {
+    "title": "",
+    "note": "Karim plumber: 09123456789",
+    "isDone": false,
+    "folderId": "default"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "My Tasks",
+    "isDefault": true
+  },
+  {
+    "name": "Shopping",
+    "isDefault": false
+  },
+  {
+    "name": "Uni",
+    "isDefault": false
+  },
+  {
+    "name": "Appoinments",
+    "isDefault": false
+  },
+  {
+    "name": "Payments",
+    "isDefault": false
+  }
+]
