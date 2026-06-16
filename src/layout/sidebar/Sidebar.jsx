@@ -2,7 +2,7 @@ import useSidebar from "./useSidebar";
 import { useUiState } from "../../providers/ui-state-provider/UiStateContext";
 import { config } from "../../config/config";
 import FolderList from "./FolderList";
-import HeaderButtonIcon from "../../components/button/HeaderButtonIcon";
+import ButtonIcon from "../../components/button/ButtonIcon";
 import { ChevronLeft } from "lucide-react";
 
 function Sidebar() {
@@ -28,9 +28,9 @@ function Sidebar() {
             text-blue-900"
         >
           <h2 className="text-2xl">Folders</h2>
-          <HeaderButtonIcon onClick={closeSidebar}>
+          <ButtonIcon onClick={closeSidebar}>
             <ChevronLeft />
-          </HeaderButtonIcon>
+          </ButtonIcon>
         </header>
         <FolderList />
       </aside>

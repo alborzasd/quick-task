@@ -1,5 +1,6 @@
-import { FolderClosedIcon } from "lucide-react";
+import { EllipsisVertical, FolderClosedIcon } from "lucide-react";
 import { useFolders } from "../../data/folders/useFolders";
+import ButtonIcon from "../../components/button/ButtonIcon";
 
 function FolderList() {
   const { folders, isPending, error } = useFolders();
@@ -22,13 +23,23 @@ function FolderItem({ folder }) {
         className="flex gap-1 hover:bg-yellow-100 px-1 py-1 rounded-md
           transition cursor-pointer items-center wrap-anywhere"
       >
-        <FolderClosedIcon className="shrink-0 self-start" />
-        <span>
-          {folder.name}
-          <span className="text-sm font-bold">
-            {folder.isDefault ? " (default)" : ""}
-          </span>
+        <span className="shrink-0 self-start py-1">
+          <FolderClosedIcon />
         </span>
+        <span className="mr-auto">
+          {folder.name + " "}
+          {folder.isDefault && (
+            <span
+              className="text-xs tracking-wider text-white bg-blue-400 p-1
+                rounded-md"
+            >
+              default
+            </span>
+          )}
+        </span>
+        <ButtonIcon>
+          <EllipsisVertical size={20} className="text-gray-700" />
+        </ButtonIcon>
       </a>
     </li>
   );

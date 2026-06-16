@@ -1,6 +1,6 @@
 import { ChevronLeft, MenuIcon, Search } from "lucide-react";
 
-import HeaderButtonIcon from "../../components/button/HeaderButtonIcon";
+import ButtonIcon from "../../components/button/ButtonIcon";
 import useSearchbar from "./useSearchbar";
 import Searchbar from "./Searchbar";
 import { useUiState } from "../../providers/ui-state-provider/UiStateContext";
@@ -14,17 +14,17 @@ function Header() {
       className="flex h-16 gap-3 items-center justify-between bg-gray-50 px-3
         py-3 text-blue-900 shadow-sm"
     >
-      <HeaderButtonIcon onClick={openSidebar}>
+      <ButtonIcon onClick={openSidebar}>
         <MenuIcon />
-      </HeaderButtonIcon>
+      </ButtonIcon>
       {isSearchOpen ? (
         <Searchbar />
       ) : (
         <h1 className="text-lg py-2">QuickTask 📝</h1>
       )}
-      <HeaderButtonIcon onClick={toggleSearchbar}>
+      <ButtonIcon onClick={toggleSearchbar}>
         {isSearchOpen ? <ChevronLeft /> : <Search />}
-      </HeaderButtonIcon>
+      </ButtonIcon>
     </header>
   );
 }

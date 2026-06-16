@@ -41,7 +41,7 @@ function FolderItem({ folder, selectedId, setSelectedId, closeModal }) {
         role="option"
         className={`flex gap-1 hover:bg-yellow-100 px-1 py-1 rounded-md
           text-left transition w-full wrap-anywhere
-          ${isSelected ? "bg-yellow-100 font-semibold" : ""}`}
+          ${isSelected ? "bg-yellow-200 hover:bg-yellow-200 font-semibold" : ""}`}
       >
         <FolderClosedIcon className="shrink-0 self-start" />
         <span>{folder.name}</span>
