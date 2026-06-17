@@ -16,7 +16,7 @@ function useModal(label) {
     if(stateValue?.openModal) {
       stateValue.openModal = [...stateValue.openModal, label];
     } else {
-      stateValue.openModal = [];
+      stateValue.openModal = [label];
     }
     navigate(
       { pathname: location.pathname, search: location.search },
