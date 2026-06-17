@@ -7,12 +7,21 @@ function useModal(label) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isModalOpen = location?.state?.openModal === label;
+  // const isModalOpen = location?.state?.openModal === label;
+  const isModalOpen = location?.state?.openModal.includes(label);
 
   const openModal = useCallback(() => {
+    // console.log("navigate", label);
+    const stateValue = {...location.state};
+    if(stateValue?.openModal) {
+      stateValue.openModal = [...stateValue.openModal, label];
+    } else {
+      stateValue.openModal = [];
+    }
     navigate(
       { pathname: location.pathname, search: location.search },
-      { state: { ...location.state, openModal: label } },
+      // { state: { ...location.state, openModal: label } },
+      { state: stateValue },
     );
   }, [location, navigate, label]);
 

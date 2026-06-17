@@ -6,6 +6,7 @@ import FolderSelector from "./FolderSelector";
 import { useFolders } from "../../../data/folders/useFolders";
 import { toast } from "sonner";
 import useCreateTask from "../../../data/tasks/useCreateTask";
+import useUpdateTask from "../../../data/tasks/useUpdateTask";
 
 // helper logic
 function getFolderName(folders, isPending, error, selectedId) {
@@ -20,7 +21,9 @@ function getFolderName(folders, isPending, error, selectedId) {
   }
 }
 
-function NewTaskItem() {
+function NewTaskItem({ task, closeModal: closeModalOuter }) {
+  const isEditMode = !!task;
+
   const {
     folders,
     error: errorFolderLoading,
@@ -28,13 +31,16 @@ function NewTaskItem() {
   } = useFolders();
 
   const { createTaskMutate } = useCreateTask();
+  const { updateTaskMutate } = useUpdateTask();
 
-  const [title, setTitle] = useState("");
-  const [note, setNote] = useState("");
+  const [title, setTitle] = useState(isEditMode ? task.title : "");
+  const [note, setNote] = useState(isEditMode ? task.note : "");
 
   // null means data is not loaded yet
   // or if it's loaded, then choose the default folder
-  const [selectedFolderId, setSelectedFolderId] = useState(null);
+  const [selectedFolderId, setSelectedFolderId] = useState(
+    isEditMode ? task.folderId : null,
+  );
   // derived state
   const selectedFolderName = getFolderName(
     folders,
@@ -43,7 +49,9 @@ function NewTaskItem() {
     selectedFolderId,
   );
 
-  const { isModalOpen, openModal, closeModal } = useModal("folder-selector");
+  const { isModalOpen, openModal, closeModal } = useModal(
+    isEditMode ? "folder-selector-edit" : "folder-selector",
+  );
 
   useEffect(() => {
     const message =
@@ -59,18 +67,29 @@ function NewTaskItem() {
     if (!note) return;
 
     let id;
-    if(!selectedFolderId) {
+    if (!selectedFolderId) {
       id = folders.find((f) => f.isDefault)?.id;
     }
 
-    createTaskMutate({
-      title,
-      note,
-      folderId: selectedFolderId || id,
-    });
+    if (isEditMode) {
+      updateTaskMutate({
+        id: task.id,
+        updatedTask: { title, note, folderId: selectedFolderId },
+      });
+    } else {
+      createTaskMutate({
+        title,
+        note,
+        folderId: selectedFolderId || id,
+      });
+    }
 
     setTitle("");
     setNote("");
+
+    if (isEditMode) {
+      closeModalOuter();
+    }
   }
 
   function handleFolderClick(e) {
@@ -95,7 +114,8 @@ function NewTaskItem() {
             onChange={(e) => setNote(e.target.value)}
             placeholder="Note"
             className="min-h-[12rem] w-full flex-1 px-1 py-2 focus:outline-none
-              resize-none [field-sizing:content]"
+              resize-none"
+              style={{fieldSizing: isEditMode ? "" : "content"}}
           />
         </div>
         <div className="flex border-t px-1 py-1 gap-2">
@@ -136,14 +156,11 @@ function FolderSelectorButton({
   isFolderPending,
   errorFolderLoading,
 }) {
-  const disabled =
-    isFolderPending ||
-    errorFolderLoading ||
-    (!isFolderPending && !errorFolderLoading && !selectedName);
+  const disabled = isFolderPending || errorFolderLoading;
 
   return (
     <button
-      disabled={disabled}
+      disabled={!!disabled}
       onClick={onClick}
       className="flex-1 flex items-center gap-1 bg-yellow-100 text-gray-600
         rounded-md px-1 text-left hover:bg-yellow-200 disabled:bg-yellow-100
@@ -155,7 +172,7 @@ function FolderSelectorButton({
           ? "loading folders..."
           : errorFolderLoading
             ? "Error! Couldn't load folders"
-            : disabled
+            : !selectedName
               ? `FolderId {${selectedId}} not found!`
               : selectedName}
       </span>
