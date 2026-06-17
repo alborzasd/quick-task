@@ -5,15 +5,18 @@ import Main from "./layout/main/Main";
 import ReactQueryProvider from "./providers/ReactQueryProvider";
 import UiStateProvider from "./providers/ui-state-provider/UiStateProvider";
 import { Toaster } from "sonner";
+import { BrowserRouter } from "react-router";
 
 function App() {
   return (
     <ReactQueryProvider>
       <UiStateProvider>
         <AppInitializer>
-          <Header />
-          <Sidebar />
-          <Main />
+          <BrowserRouter>
+            <Header />
+            <Sidebar />
+            <Main />
+          </BrowserRouter>
         </AppInitializer>
         <Toaster richColors />
       </UiStateProvider>

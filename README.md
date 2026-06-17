@@ -9,6 +9,14 @@ Status: Early development
 - Fast and minimal interface
 - Offline storage
 
+## Preview
+The live demo is hosted on Github Pages:  
+[https://alborzasd.github.io/quick-task](https://alborzasd.github.io/quick-task)
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/945facf9-696f-4f05-b683-b25fe2e7b88d" alt="quick-task-mobile" width="400" />
+</p>
+
 ## Tech Stack
 - React
 - React Query

@@ -1,14 +1,11 @@
 import useSidebar from "./useSidebar";
-import { useUiState } from "../../providers/ui-state-provider/UiStateContext";
 import { config } from "../../config/config";
 import FolderList from "./FolderList";
 import ButtonIcon from "../../components/button/ButtonIcon";
 import { ChevronLeft } from "lucide-react";
 
 function Sidebar() {
-  const { isSidebarOpen, closeSidebar } = useUiState();
-
-  useSidebar(isSidebarOpen, closeSidebar);
+  const { isSidebarOpen, closeSidebar } = useSidebar();
 
   return (
     <>

@@ -5,7 +5,7 @@ function ModalBox({ children, title }) {
   // becuase child will grow any way and won't reach the overflow
   // if we set overflow: auto this parent, the content scrolls on padding-box
   return (
-    <div className="flex flex-col gap-2 bg-white rounded-md px-2 py-2 w-[80%] max-h-[80%]">
+    <div className="flex flex-col gap-2 bg-white rounded-md px-2 py-2 w-[80%] max-w-3xl max-h-[80%]">
       <h2 className="text-2xl text-gray-600 border-b">{title}</h2>
       {children}
     </div>

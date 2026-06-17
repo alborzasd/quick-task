@@ -3,11 +3,12 @@ import { ChevronLeft, MenuIcon, Search } from "lucide-react";
 import ButtonIcon from "../../components/button/ButtonIcon";
 import useSearchbar from "./useSearchbar";
 import Searchbar from "./Searchbar";
-import { useUiState } from "../../providers/ui-state-provider/UiStateContext";
+import useSidebar from "../sidebar/useSidebar";
 
 function Header() {
   const { isSearchOpen, toggleSearchbar } = useSearchbar();
-  const { openSidebar } = useUiState();
+
+  const { openSidebar } = useSidebar();
 
   return (
     <header

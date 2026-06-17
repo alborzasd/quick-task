@@ -5,6 +5,7 @@ import Modal from "../../../components/modal/Modal";
 import FolderSelector from "./FolderSelector";
 import { useFolders } from "../../../data/folders/useFolders";
 import { toast } from "sonner";
+import useCreateTask from "../../../data/tasks/useCreateTask";
 
 // helper logic
 function getFolderName(folders, isPending, error, selectedId) {
@@ -26,6 +27,8 @@ function NewTaskItem() {
     isPending: isFolderPending,
   } = useFolders();
 
+  const { createTaskMutate } = useCreateTask();
+
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
 
@@ -40,7 +43,7 @@ function NewTaskItem() {
     selectedFolderId,
   );
 
-  const { isModalOpen, openModal, closeModal } = useModal(false);
+  const { isModalOpen, openModal, closeModal } = useModal("folder-selector");
 
   useEffect(() => {
     const message =
@@ -53,6 +56,21 @@ function NewTaskItem() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!note) return;
+
+    let id;
+    if(!selectedFolderId) {
+      id = folders.find((f) => f.isDefault)?.id;
+    }
+
+    createTaskMutate({
+      title,
+      note,
+      folderId: selectedFolderId || id,
+    });
+
+    setTitle("");
+    setNote("");
   }
 
   function handleFolderClick(e) {

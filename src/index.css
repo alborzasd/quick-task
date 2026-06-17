@@ -10,6 +10,7 @@
 
 @layer utilities {
   .wrap-anywhere {
+    white-space: pre-wrap;
     overflow-wrap: anywhere;
     hyphens: auto;
   }

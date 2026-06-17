@@ -8,6 +8,7 @@ import {
 } from "../data/folders/foldersRepository";
 
 import {
+  getTasks,
   createTask,
   updateTask,
   deleteTask,
@@ -78,6 +79,7 @@ export default {
   deleteFolder,
   setFolderAsDefault,
 
+  getTasks,
   createTask,
   updateTask,
   deleteTask,

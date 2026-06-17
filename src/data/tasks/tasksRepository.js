@@ -1,7 +1,7 @@
 import { db } from "../db";
 
 export async function getTasks() {
-  return db.tasks.orderby("id").toArray();
+  return db.tasks.orderBy("id").reverse().toArray();
 }
 
 export async function createTask(newTask) {
