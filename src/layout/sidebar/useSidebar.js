@@ -19,7 +19,7 @@ function useSidebar() {
     navigate(-1);
   }, [navigate]);
 
-  usePreventScroll(isSidebarOpen);
+  // usePreventScroll(isSidebarOpen);
 
   return { isSidebarOpen, openSidebar, closeSidebar };
 }

@@ -3,6 +3,7 @@ import { config } from "../../config/config";
 import FolderList from "./FolderList";
 import ButtonIcon from "../../components/button/ButtonIcon";
 import { ChevronLeft } from "lucide-react";
+import NewFolder from "./NewFolder";
 
 function Sidebar() {
   const { isSidebarOpen, closeSidebar } = useSidebar();
@@ -30,6 +31,7 @@ function Sidebar() {
           </ButtonIcon>
         </header>
         <FolderList />
+        <NewFolder />
       </aside>
     </>
   );

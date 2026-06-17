@@ -20,7 +20,7 @@ function useModal(label) {
     navigate(-1);
   }, [navigate]);
 
-  usePreventScroll(isModalOpen);
+  // usePreventScroll(isModalOpen);
 
   return { isModalOpen, openModal, closeModal };
 }
