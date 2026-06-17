@@ -1,5 +1,6 @@
 {
   "name": "quick-task",
+  "homepage": "https://alborzasd.github.io/quick-task/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,12 +8,15 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.5",
     "@tanstack/react-query-devtools": "^5.100.5",
     "dexie": "^4.4.2",
+    "gh-pages": "^6.3.0",
     "lucide-react": "^1.11.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
