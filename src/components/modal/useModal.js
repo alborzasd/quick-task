@@ -8,7 +8,7 @@ function useModal(label) {
   const navigate = useNavigate();
 
   // const isModalOpen = location?.state?.openModal === label;
-  const isModalOpen = location?.state?.openModal.includes(label);
+  const isModalOpen = location?.state?.openModal?.includes(label);
 
   const openModal = useCallback(() => {
     // console.log("navigate", label);
